@@ -85,8 +85,38 @@ def reverse_string(string: str) -> str:
         res = i + res
     return res
 
+def calc_divisor(num_of_digits: int) -> int:
+    if num_of_digits <= 2:
+        return 10
+
+    divisor: int = 10
+    for _ in range(num_of_digits-2):
+        divisor *= 10
+    return divisor
+
 def is_palindrom(num: int) -> bool:
-    return str(num) == reverse_string(str(num)) 
+    if num < 10:
+        return True
+
+    num_of_digits: int = 0
+    temp: int = num
+    valid: bool = True 
+    while temp:
+        num_of_digits += 1
+        temp = int(float(temp)/10)
+
+    while valid and num_of_digits > 2:
+        divisor: int = calc_divisor(num_of_digits)
+        left_most: int = int(num/divisor)
+        right_most: int = num % 10
+
+        if (left_most != right_most):
+            valid = False
+
+        num_of_digits -= 2
+        num = int((float(num-divisor))/10)
+
+    return valid 
 
 def sum_palindrom_num() -> None:
     start: int = int(input("What is that start value: "))
