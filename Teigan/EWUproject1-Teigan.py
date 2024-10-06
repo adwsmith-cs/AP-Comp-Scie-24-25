@@ -156,8 +156,8 @@ def diceRoll(numOfRolls):
     print("12 -",twelves, twelves/numOfRolls*100,"%")
     print("Doubles -",doubles, doubles/numOfRolls*100,"%")
 
-def reverseString(x):
-    for eachNum in range(1,x):
+#def reverseString(x):
+    #for eachNum in range(1,x):
 
 
 def menuItemSeven():
